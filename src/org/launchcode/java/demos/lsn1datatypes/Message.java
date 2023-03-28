@@ -7,7 +7,9 @@ public class Message {
         if (lang.equals("sp")) {
             return "¡Hola, Mundo!";
         } else if (lang.equals("fr")) {
-            return "Bonjour, le monde!";
+            return "Bonjour, Frenchies!";
+        } else if (lang.equals("ger")) {
+            return "Hallo, Deutchland!";
         } else {
             return "Hello, World!";
         }
