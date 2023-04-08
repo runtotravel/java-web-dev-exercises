@@ -5,85 +5,70 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MenuItem {
+    private String name;
     private String description;
     private Double price;
     private String category;
     private Boolean isNew;
-    private Boolean isAvailable;
-    private Boolean isVegan;
-    private Date dateAdded;
-    private ArrayList allergens;
-    private String proteinType;
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
+
+public MenuItem(String name, String description, Double price) {
+        this.name = name;
         this.description = description;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
         this.price = price;
+        this.category = "Not Categorized";
+        this.isNew = false;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
+    public MenuItem(String name, String description, Double price, String category, Boolean isNew) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
         this.category = category;
+        this.isNew = isNew;
     }
 
-    public Boolean getNew() {
-        return isNew;
-    }
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
 
-    public void setNew(Boolean aNew) {
-        isNew = aNew;
-    }
+    public String getDescription() {return description;}
+    public void setDescription(String description) {this.description = description;}
 
-    public Boolean getAvailable() {
-        return isAvailable;
-    }
+    public Double getPrice() {return price;}
+    public void setPrice(Double price) {this.price = price;}
 
-    public void setAvailable(Boolean available) {
-        isAvailable = available;
-    }
+    public String getCategory() {return category;}
+    public void setCategory(String category) {this.category = category;}
 
-    public Boolean getVegan() {
-        return isVegan;
-    }
+    public Boolean isNew() {return isNew; }
+    public void setIsNew(Boolean isNew) {this.isNew = isNew;}
 
-    public void setVegan(Boolean vegan) {
-        isVegan = vegan;
-    }
+@Override
+public String toString() {
+    String returnString = "";
 
-    public Date getDateAdded() {
-        return dateAdded;
-    }
+    returnString += "Item Name: " + this.name + '\n';
+    returnString += "Item Description: " + this.description + '\n';
+    returnString += "Item Price: " + this.price + '\n';
+    returnString += "Item Category: " + this.category + '\n';
+    returnString += "Item is new?: " + this.isNew + '\n';
 
-    public void setDateAdded(Date dateAdded) {
-        this.dateAdded = dateAdded;
-    }
-
-    public ArrayList getAllergens() {
-        return allergens;
-    }
-
-    public void setAllergens(ArrayList allergens) {
-        this.allergens = allergens;
-    }
-
-    public String getProteinType() {
-        return proteinType;
-    }
-
-    public void setProteinType(String proteinType) {
-        this.proteinType = proteinType;
-    }
-
+    return returnString;
 }
+
+@Override
+public boolean equals(Object obj){
+        if(obj==this)return true;
+
+        if (!(obj instanceof MenuItem)) {
+            return false;
+        }
+        MenuItem menuItem = (MenuItem) obj;
+        if (menuItem.name.equals(this.name)
+                && menuItem.description.equals(this.description)
+                && menuItem.price.equals(this.price)
+                && menuItem.category.equals(this.category))
+            return true;
+        else return false;
+        }
+        }

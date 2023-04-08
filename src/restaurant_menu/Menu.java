@@ -1,36 +1,39 @@
 package restaurant_menu;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
 
 public class Menu {
-    private Date dateUpdated;
-    private ArrayList items;
-    private Date mostRecent;
+    private ArrayList<MenuItem> menuItems = new ArrayList<>();
+    private Date lastUpdated;
 
-    public Date getDateUpdated() {
-        return dateUpdated;
+    public Menu() {
+        this.lastUpdated = new Date();
     }
 
-    public void setDateUpdated(Date dateUpdated) {
-        this.dateUpdated = dateUpdated;
+    public ArrayList<MenuItem> getMenuItems() {return this.menuItems; }
+    public void setMenuItems(ArrayList<MenuItem> menuItems) {this.menuItems = menuItems;}
+
+    public Date getLastUpdated() { return this.lastUpdated; }
+    public void setLastUpdated(Date lastUpdated) {this.lastUpdated = lastUpdated;}
+
+    public void addMenuItem(MenuItem item) {
+        this.menuItems.add(item);
+        this.lastUpdated = new Date();
     }
 
-    public ArrayList getItems() {
-        return items;
+    public void removeMenuItem(MenuItem item) {
+        this.menuItems.remove(item);
+        this.lastUpdated = new Date();
     }
 
-    public void setItems(ArrayList items) {
-        this.items = items;
+    @Override
+    public String toString() {
+        String returnString = "";
+        for (MenuItem item : this.menuItems) {
+            returnString += item.toString() + "\n\n";
+        }
+        return returnString;
     }
-
-    public Date getMostRecent() {
-        return mostRecent;
-    }
-
-    public void setMostRecent(Date mostRecent) {
-        this.mostRecent = mostRecent;
-    }
-
-
 }
